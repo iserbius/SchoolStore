@@ -4,7 +4,6 @@
 
 import Foundation
 
-enum Errors: Error {
-    case authFailed
-    case unknown
+struct DataResponse<T: Decodable>: Decodable {
+    let data: T
 }

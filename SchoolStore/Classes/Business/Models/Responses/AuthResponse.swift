@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum Errors: Error {
-    case authFailed
-    case unknown
+struct AuthResponse: Decodable {
+    let accessToken: String
+    let profile: Profile
 }

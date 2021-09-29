@@ -4,7 +4,6 @@
 
 import Foundation
 
-enum Errors: Error {
-    case authFailed
-    case unknown
+public enum RequestMethod: String {
+    case get, post, put, delete, patch
 }

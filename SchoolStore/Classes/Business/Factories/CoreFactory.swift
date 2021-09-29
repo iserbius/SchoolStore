@@ -5,7 +5,9 @@
 import Foundation
 
 enum CoreFactory {
-    static let networkProvider: NetworkProvider = NetworkProviderImpl()
+    static let requestBuilder: RequestBuilder = RequestBuilderImpl(dataService: Self.dataService)
+
+    static let networkProvider: NetworkProvider = NetworkProviderImpl(requestBuilder: requestBuilder)
 
     static let dataService: DataService = DataServiceImpl()
 

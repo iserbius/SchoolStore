@@ -4,7 +4,8 @@
 
 import Foundation
 
-enum Errors: Error {
-    case authFailed
-    case unknown
+struct Profile: Decodable {
+    let name: String
+    let surname: String
+    let occupation: String
 }

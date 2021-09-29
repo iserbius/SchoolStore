@@ -93,6 +93,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C213C1C42704C52700E84711 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		C21E13132704510C00867E2E = {
 			isa = PBXGroup;
 			children = (
@@ -141,13 +148,6 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		C21E133527045A4C00867E2E /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UIKit;
-			sourceTree = "<group>";
-		};
 		C21E133627045A6300867E2E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,9 +164,9 @@
 		C21E133727045A6B00867E2E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C213C1C42704C52700E84711 /* UIKit */,
 				C21E136A27046DB500867E2E /* Generated */,
 				C21E131F2704510C00867E2E /* AppDelegate.swift */,
-				C21E133527045A4C00867E2E /* UIKit */,
 				C21E133427045A3F00867E2E /* Modules */,
 				C21E133327045A3100867E2E /* Business */,
 			);

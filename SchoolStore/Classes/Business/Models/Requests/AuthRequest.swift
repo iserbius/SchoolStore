@@ -23,6 +23,13 @@ enum AuthRequest: Request {
         }
     }
 
+    var body: Data? {
+        switch self {
+        case let .login(user, password):
+            return RequestBuilderImpl.encode(["login": user, "password": password])
+        }
+    }
+
     var mock: Data? {
         switch self {
         case .login:

@@ -25,7 +25,7 @@ final class AuthServiceImpl: AuthService {
     typealias Authenticateed = DataResponse<AuthResponse>
 
     func authenticate(user: String, with password: String, completion: ((Result<String, Error>) -> Void)?) {
-        networkProvider.mock(AuthRequest.login(user: user, password: password)) { [weak self] (result: Result<Authenticateed, Error>) in
+        networkProvider.mock(UserRequest.login(user: user, password: password)) { [weak self] (result: Result<Authenticateed, Error>) in
             switch result {
             case let .success(data):
                 let token = data.data.accessToken

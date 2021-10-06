@@ -20,8 +20,9 @@ class AuthVC: UIViewController {
 
     @IBOutlet var signInButton: UIButton!
 
-    func setup(with authService: AuthService) {
+    func setup(with authService: AuthService, _ snacker: Snacker) {
         self.authService = authService
+        self.snacker = snacker
     }
 
     @IBAction func signInPressed(_: Any) {
@@ -30,21 +31,44 @@ class AuthVC: UIViewController {
         }
         if user.isEmpty {
             loginField.error = "Field is empty"
-        } else if password != "pass", user != "user" {
-            passwordField.error = "Auth failed"
+        } else if password.isEmpty {
+            passwordField.error = "Field is empty"
         } else {
-            authService?.authenticate(user: user, with: password, completion: { (result: Result<String, Error>) in
-                guard case .success = result else {
-                    return
+            authService?.authenticate(user: user, with: password, completion: { [weak self] (result: Result<String, Error>) in
+                switch result {
+                case .success:
+                    UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildTabBarVC()
+                case let .failure(error):
+                    self?.handle(error: error)
                 }
-                UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildTabBarVC()
             })
         }
     }
 
     // MARK: Private
 
+    private var snacker: Snacker?
+
     private var authService: AuthService?
+
+    private func handle(error: Error) {
+        snacker?.show(snack: error.localizedDescription, with: .error)
+        if let networkError = error as? Errors {
+            switch networkError {
+            case let .failedResponse(_, fields):
+                fields?.forEach { field in
+                    switch field.field {
+                    case "login":
+                        self.loginField.error = field.message
+                    default:
+                        break
+                    }
+                }
+            default:
+                break
+            }
+        }
+    }
 
     private func localizable() {
         loginField.title = L10n.Auth.login

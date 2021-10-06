@@ -8,7 +8,8 @@ enum VCFactory {
     static func buildAuthVC() -> UIViewController? {
         let vc = StoryboardScene.Auth.initialScene.instantiate()
         let authService = CoreFactory.buildAuthService()
-        vc.setup(with: authService)
+        let snacker = CoreFactory.snacker
+        vc.setup(with: authService, snacker)
         return vc
     }
 

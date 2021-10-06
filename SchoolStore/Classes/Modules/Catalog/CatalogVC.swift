@@ -5,4 +5,8 @@
 import Foundation
 import UIKit
 
-final class CatalogVC: UIViewController {}
+final class CatalogVC: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}

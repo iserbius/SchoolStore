@@ -25,6 +25,8 @@ internal enum L10n {
   }
 
   internal enum Common {
+    /// Поле пустое
+    internal static let emptyField = L10n.tr("Localizable", "common.emptyField")
     /// Что-то пошло не так
     internal static let error = L10n.tr("Localizable", "common.error")
   }

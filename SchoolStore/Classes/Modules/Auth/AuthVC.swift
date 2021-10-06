@@ -30,9 +30,9 @@ class AuthVC: UIViewController {
             return
         }
         if user.isEmpty {
-            loginField.error = "Field is empty"
+            loginField.error = L10n.Common.emptyField
         } else if password.isEmpty {
-            passwordField.error = "Field is empty"
+            passwordField.error = L10n.Common.emptyField
         } else {
             authService?.authenticate(user: user, with: password, completion: { [weak self] (result: Result<String, Error>) in
                 switch result {

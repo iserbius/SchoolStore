@@ -25,8 +25,10 @@ class ProfileVC: UIViewController {
 
     // MARK: Internal
 
+    var dataService: DataService?
+
     @IBAction func logoutPressed(_: Any) {
-        // TODO: Add service call here
+        dataService?.appState.accessToken = nil
         UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildAuthVC()
     }
 }

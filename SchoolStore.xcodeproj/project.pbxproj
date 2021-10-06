@@ -3,10 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E74DC9F682F7103E6003DD3 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74DFAD2DCF610F9DC7903D /* InputField.swift */; };
+		C214165B270DA80B00C40071 /* AutoLayoutSugar in Frameworks */ = {isa = PBXBuildFile; productRef = C214165A270DA80B00C40071 /* AutoLayoutSugar */; };
+		C214165E270DB9E400C40071 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C214165D270DB9E400C40071 /* KeychainAccess */; };
+		C2141660270DBD1000C40071 /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214165F270DBD1000C40071 /* HistoryVC.swift */; };
+		C2141662270DBD2900C40071 /* CatalogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2141661270DBD2900C40071 /* CatalogVC.swift */; };
 		C21E13202704510C00867E2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E131F2704510C00867E2E /* AppDelegate.swift */; };
 		C21E13292704510E00867E2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C21E13282704510E00867E2E /* Assets.xcassets */; };
 		C21E132C2704510E00867E2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C21E132A2704510E00867E2E /* LaunchScreen.storyboard */; };
@@ -44,6 +49,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E74DFAD2DCF610F9DC7903D /* InputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
+		C214165F270DBD1000C40071 /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
+		C2141661270DBD2900C40071 /* CatalogVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogVC.swift; sourceTree = "<group>"; };
 		C21E131C2704510C00867E2E /* SchoolStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C21E131F2704510C00867E2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C21E13282704510E00867E2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,6 +95,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C214165E270DB9E400C40071 /* KeychainAccess in Frameworks */,
+				C214165B270DA80B00C40071 /* AutoLayoutSugar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +106,7 @@
 		C213C1C42704C52700E84711 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				5E74DFAD2DCF610F9DC7903D /* InputField.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -210,6 +221,7 @@
 		C21E134527045B9D00867E2E /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
+				C2141661270DBD2900C40071 /* CatalogVC.swift */,
 			);
 			path = Catalog;
 			sourceTree = "<group>";
@@ -217,6 +229,7 @@
 		C21E134627045BA900867E2E /* History */ = {
 			isa = PBXGroup;
 			children = (
+				C214165F270DBD1000C40071 /* HistoryVC.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -337,6 +350,10 @@
 			dependencies = (
 			);
 			name = SchoolStore;
+			packageProductDependencies = (
+				C214165A270DA80B00C40071 /* AutoLayoutSugar */,
+				C214165D270DB9E400C40071 /* KeychainAccess */,
+			);
 			productName = SchoolStore;
 			productReference = C21E131C2704510C00867E2E /* SchoolStore.app */;
 			productType = "com.apple.product-type.application";
@@ -364,6 +381,10 @@
 				ru,
 			);
 			mainGroup = C21E13132704510C00867E2E;
+			packageReferences = (
+				C2141659270DA80B00C40071 /* XCRemoteSwiftPackageReference "auto-layout-sugar-ios" */,
+				C214165C270DB9E400C40071 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = C21E131D2704510C00867E2E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -442,6 +463,7 @@
 				C21E134B27045C6C00867E2E /* AuthVC.swift in Sources */,
 				C27E0F21270473A20015530B /* Strings.swift in Sources */,
 				C2D720A927048B1A00C40EA5 /* Profile.swift in Sources */,
+				C2141662270DBD2900C40071 /* CatalogVC.swift in Sources */,
 				C21E134F27045CA900867E2E /* TabBarVC.swift in Sources */,
 				C21E135B270464DD00867E2E /* NetworkProvider.swift in Sources */,
 				C21E13552704619D00867E2E /* CoreFactory.swift in Sources */,
@@ -459,8 +481,10 @@
 				C21E1357270463C400867E2E /* AuthService.swift in Sources */,
 				C2D7209F2704855100C40EA5 /* RequestBuilder.swift in Sources */,
 				C2D7209D270484E700C40EA5 /* RequestMethod.swift in Sources */,
+				C2141660270DBD1000C40071 /* HistoryVC.swift in Sources */,
 				C27E0F20270473A20015530B /* StoryboardScenes.swift in Sources */,
 				C2D720A22704869900C40EA5 /* AuthRequest.swift in Sources */,
+				5E74DC9F682F7103E6003DD3 /* InputField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,6 +694,38 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C2141659270DA80B00C40071 /* XCRemoteSwiftPackageReference "auto-layout-sugar-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Heads-and-Hands/auto-layout-sugar-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.6;
+			};
+		};
+		C214165C270DB9E400C40071 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C214165A270DA80B00C40071 /* AutoLayoutSugar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2141659270DA80B00C40071 /* XCRemoteSwiftPackageReference "auto-layout-sugar-ios" */;
+			productName = AutoLayoutSugar;
+		};
+		C214165D270DB9E400C40071 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C214165C270DB9E400C40071 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C21E13142704510C00867E2E /* Project object */;
 }

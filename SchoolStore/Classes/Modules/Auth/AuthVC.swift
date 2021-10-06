@@ -14,15 +14,11 @@ class AuthVC: UIViewController {
 
     // MARK: Internal
 
-    @IBOutlet var loginField: UITextField!
+    @IBOutlet var loginField: InputField!
 
-    @IBOutlet var passwordField: UITextField!
+    @IBOutlet var passwordField: InputField!
 
     @IBOutlet var signInButton: UIButton!
-
-    @IBOutlet var authLabel: UILabel!
-
-    @IBOutlet var passwordLabel: UILabel!
 
     func setup(with authService: AuthService) {
         self.authService = authService
@@ -32,12 +28,18 @@ class AuthVC: UIViewController {
         guard let user = loginField.text, let password = passwordField.text else {
             return
         }
-        authService?.authenticate(user: user, with: password, completion: { (result: Result<String, Error>) in
-            guard case .success = result else {
-                return
-            }
-            UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildTabBarVC()
-        })
+        if user.isEmpty {
+            loginField.error = "Field is empty"
+        } else if password != "pass", user != "user" {
+            passwordField.error = "Auth failed"
+        } else {
+            authService?.authenticate(user: user, with: password, completion: { (result: Result<String, Error>) in
+                guard case .success = result else {
+                    return
+                }
+                UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildTabBarVC()
+            })
+        }
     }
 
     // MARK: Private
@@ -45,8 +47,8 @@ class AuthVC: UIViewController {
     private var authService: AuthService?
 
     private func localizable() {
-        authLabel.text = L10n.Auth.login
-        passwordLabel.text = L10n.Auth.password
+        loginField.title = L10n.Auth.login
+        passwordField.title = L10n.Auth.password
         signInButton.setTitle(L10n.Auth.action, for: .normal)
     }
 }

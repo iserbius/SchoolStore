@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import KeychainAccess
 
 // MARK: - DataService
 
@@ -16,8 +17,11 @@ final class DataServiceImpl: DataService {
     // MARK: Lifecycle
 
     init() {
+        keychain = Keychain()
+        userDefaults = UserDefaults.standard
+
         appState = AppState(
-            accessToken: UserDefaults.standard.string(forKey: Keys.accessToken.rawValue)
+            accessToken: keychain[Keys.accessToken.rawValue]
         )
     }
 
@@ -25,7 +29,7 @@ final class DataServiceImpl: DataService {
 
     var appState: AppState {
         didSet {
-            UserDefaults.standard.setValue(appState.accessToken, forKey: Keys.accessToken.rawValue)
+            keychain[Keys.accessToken.rawValue] = appState.accessToken
         }
     }
 
@@ -34,4 +38,8 @@ final class DataServiceImpl: DataService {
     private enum Keys: String {
         case accessToken
     }
+
+    private let keychain: Keychain
+
+    private let userDefaults: UserDefaults
 }

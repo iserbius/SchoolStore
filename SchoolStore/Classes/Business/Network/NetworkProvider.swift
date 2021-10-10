@@ -32,7 +32,7 @@ final class NetworkProviderImpl: NetworkProvider {
             completion?(.success(response))
         }
         if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {
-            completion?(.failure(Errors.failedResponse(message: errorResponse.message, fieelds: errorResponse.fields)))
+            completion?(.failure(Errors.failedResponse(message: errorResponse.message, fields: errorResponse.fields)))
         } else {
             completion?(.failure(Errors.unknown))
         }
@@ -54,7 +54,7 @@ final class NetworkProviderImpl: NetworkProvider {
             if let response = try? self.decoder.decode(T.self, from: data) {
                 completion?(.success(response))
             } else if let errorResponse = try? self.decoder.decode(ErrorResponse.self, from: data) {
-                completion?(.failure(Errors.failedResponse(message: errorResponse.message, fieelds: errorResponse.fields)))
+                completion?(.failure(Errors.failedResponse(message: errorResponse.message, fields: errorResponse.fields)))
             } else {
                 completion?(.failure(Errors.unknown))
             }

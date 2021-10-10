@@ -24,7 +24,9 @@ internal enum Asset {
   internal static let accentColor = ColorAsset(name: "AccentColor")
   internal static let fieldBacground = ColorAsset(name: "field.bacground")
   internal static let fieldError = ColorAsset(name: "field.error")
+  internal static let fieldText = ColorAsset(name: "field.text")
   internal static let fieldEye = ImageAsset(name: "field.eye")
+  internal static let itemPlaceholder = ImageAsset(name: "item.placeholder")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

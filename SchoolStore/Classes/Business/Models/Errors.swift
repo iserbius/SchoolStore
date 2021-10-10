@@ -7,7 +7,7 @@ import Foundation
 // MARK: - Errors
 
 enum Errors: LocalizedError {
-    case failedResponse(message: String, fieelds: [FieldError]?)
+    case failedResponse(message: String, fields: [FieldError]?)
     case unknown
 
     // MARK: Internal

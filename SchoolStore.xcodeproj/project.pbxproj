@@ -525,7 +525,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" == \"Debug\" ]; then\n  if which mint >/dev/null; then\n    xcrun --sdk macosx make fmt\n  fi\nfi\n";
+			shellScript = "if [ \"${CONFIGURATION}\" == \"Debug\" ]; then\n    if which swiftformat >/dev/null; then\n      swiftformat .\n    else\n      echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\n    fi\nfi\n";
 		};
 		C27E0F25270477600015530B /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -543,7 +543,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" == \"Debug\" ]; then\n  if which mint >/dev/null; then\n    xcrun --sdk macosx make swiftgen\n  fi\nfi\n";
+			shellScript = "if [ \"${CONFIGURATION}\" == \"Debug\" ]; then\n  if which swiftgen >/dev/null; then\n    swiftgen\n  fi\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

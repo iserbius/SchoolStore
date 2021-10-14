@@ -74,7 +74,6 @@ final class ProductCell: UITableViewCell {
         contentView.addSubview(addToCartButton)
         contentView.addSubview(separatorView)
 
-        contentImageView.image = Asset.itemPlaceholder.image
         contentImageView
             .top(16).left(16).bottom(16).width(112).height(112)
 

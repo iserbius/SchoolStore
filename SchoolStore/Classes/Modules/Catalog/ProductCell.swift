@@ -21,9 +21,9 @@ final class ProductCell: UITableViewCell {
 
     // MARK: Internal
 
-    var model: String? {
+    var model: Product? {
         didSet {
-            titleLabel.text = model
+            titleLabel.text = model?.id
         }
     }
 

@@ -5,8 +5,8 @@
 import Foundation
 
 enum CatalogRequest: Request {
-    case listOfProducts
-    case detailInfo
+    case listOfProducts(offset: Int, limit: Int)
+    case detailInfo(String)
 
     // MARK: Internal
 
@@ -14,16 +14,14 @@ enum CatalogRequest: Request {
         switch self {
         case .listOfProducts:
             return "products"
-        case .detailInfo:
-            return "products/{product_id}"
+        case let .detailInfo(id):
+            return "products/\(id)"
         }
     }
 
     var method: RequestMethod {
         switch self {
-        case .listOfProducts:
-            return .get
-        case .detailInfo:
+        case .listOfProducts, .detailInfo:
             return .get
         }
     }

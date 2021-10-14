@@ -15,20 +15,27 @@ final class CatalogVC: UIViewController {
         super.viewDidLoad()
         view.addSubview(tableView)
         tableView.top().left().right().bottom()
-
-        DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
-            self?.items = [
-                "43", "76", "3", "88", "gf", "5", "2233",
-            ]
-            self?.tableView.reloadData()
-        }
+        catalogService?.getCatalogItems(with: 0, limit: 20, completion: { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            switch result {
+            case let .success(products):
+                self.items = products
+                self.tableView.reloadData()
+            case .failure:
+                break
+            }
+        })
     }
 
     // MARK: Internal
 
     static let productCellReuseId: String = ProductCell.description()
 
-    var items: [String] = []
+    var items: [Product] = []
+
+    var catalogService: CatalogService?
 
     // MARK: Private
 

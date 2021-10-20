@@ -39,6 +39,7 @@ final class CatalogVC: UIViewController {
     var catalogService: CatalogService?
 
     var snacker: Snacker?
+
 //
 //    func configTableView() {
 //        dataSource = UITableViewDiffableDataSource<SimpleDiffableSection, Producr>(
@@ -64,6 +65,24 @@ final class CatalogVC: UIViewController {
 //        snapshot.appendItems(items, toSection: .main)
 //        dataSource?.apply(snapshot, animatingDifferences: false)
 //    }
+//
+//    func loadNextPage() {
+//        isLoadingNextPage = true
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//            self.isLoadingNextPage = false
+//        }
+//    }
+//
+//    func loadFooterView(load: Bool) {
+//        if load {
+//            let view = UIView()
+//            view.frame.size = .init(width: view.frame.size.width, height: 60)
+//            view.startLoading(with: .smallBlue)
+//            tableView.tableFooterView = view
+//        } else {
+//            tableView.tableFooterView = UIView()
+//        }
+//    }
 
     // MARK: Private
 
@@ -86,6 +105,13 @@ final class CatalogVC: UIViewController {
         )
         return tableView
     }()
+
+//
+//    private var isLoadingNextPage: Bool = false {
+//        didSet {
+//            loadFooterView(load: isLoadingNextPage)
+//        }
+//    }
 }
 
 // MARK: UITableViewDelegate, UITableViewDataSource
@@ -130,4 +156,18 @@ extension CatalogVC: UITableViewDelegate, UITableViewDataSource {
             }
         })
     }
+
+//
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate _: Bool) {
+//        guard !isLoadingNextPage else { return }
+//        let offset = scrollView.contentOffset.y
+//        let height = scrollView.frame.size.height
+//        let contentHeight = scrollView.contentSize.height
+//
+//        if scrollView == tableView {
+//            if (offset + height) >= contentHeight {
+//                loadNextPage()
+//            }
+//        }
+//    }
 }

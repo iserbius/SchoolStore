@@ -70,6 +70,7 @@
 		C2CD319C2720284E001A32C3 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD319B2720284E001A32C3 /* Order.swift */; };
 		C2CD319E272028B5001A32C3 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD319D272028B5001A32C3 /* OrderStatus.swift */; };
 		C2CD31A02720297C001A32C3 /* ProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD319F2720297C001A32C3 /* ProductResponse.swift */; };
+		C2CD31A327202AC3001A32C3 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C2CD31A227202AC3001A32C3 /* Kingfisher */; };
 		C2D7209D270484E700C40EA5 /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D7209C270484E700C40EA5 /* RequestMethod.swift */; };
 		C2D7209F2704855100C40EA5 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D7209E2704855100C40EA5 /* RequestBuilder.swift */; };
 		C2D720A22704869900C40EA5 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D720A12704869900C40EA5 /* UserRequest.swift */; };
@@ -156,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2CD31A327202AC3001A32C3 /* Kingfisher in Frameworks */,
 				C2B96D3E270DD48C0012D0E8 /* TTGSnackbar in Frameworks */,
 				C214165E270DB9E400C40071 /* KeychainAccess in Frameworks */,
 				C214165B270DA80B00C40071 /* AutoLayoutSugar in Frameworks */,
@@ -454,6 +456,7 @@
 				C214165A270DA80B00C40071 /* AutoLayoutSugar */,
 				C214165D270DB9E400C40071 /* KeychainAccess */,
 				C2B96D3D270DD48C0012D0E8 /* TTGSnackbar */,
+				C2CD31A227202AC3001A32C3 /* Kingfisher */,
 			);
 			productName = SchoolStore;
 			productReference = C21E131C2704510C00867E2E /* SchoolStore.app */;
@@ -487,6 +490,7 @@
 				C2141659270DA80B00C40071 /* XCRemoteSwiftPackageReference "auto-layout-sugar-ios" */,
 				C214165C270DB9E400C40071 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				C2B96D3C270DD48C0012D0E8 /* XCRemoteSwiftPackageReference "TTGSnackbar" */,
+				C2CD31A127202AC3001A32C3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = C21E131D2704510C00867E2E /* Products */;
 			projectDirPath = "";
@@ -855,6 +859,14 @@
 				minimumVersion = 1.10.5;
 			};
 		};
+		C2CD31A127202AC3001A32C3 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -872,6 +884,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C2B96D3C270DD48C0012D0E8 /* XCRemoteSwiftPackageReference "TTGSnackbar" */;
 			productName = TTGSnackbar;
+		};
+		C2CD31A227202AC3001A32C3 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2CD31A127202AC3001A32C3 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

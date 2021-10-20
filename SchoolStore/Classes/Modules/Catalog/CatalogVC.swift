@@ -39,8 +39,40 @@ final class CatalogVC: UIViewController {
     var catalogService: CatalogService?
 
     var snacker: Snacker?
+//
+//    func configTableView() {
+//        dataSource = UITableViewDiffableDataSource<SimpleDiffableSection, Producr>(
+//            tableView: tableView,
+//            cellProvider: { tableView, indexPath, _ -> UITableViewCell? in
+//                guard let cell = tableView.dequeueReusableCell(
+//                    withIdentifier: Self.productCellReuseId,
+//                    for: indexPath
+//                ) as? ProductCell else {
+//                    return
+//                }
+//                cell.model = items[indexPath.row]
+//                cell.buyHandler = { product in
+//                    debugPrint("Buy \(product.id)")
+//                }
+//            }
+//        )
+//    }
+//
+//    func snapshot(_ items: [Product]) {
+//        var snapshot = NSDiffableDataSourceSnapshot<SimpleDiffableSection, Product>()
+//        snapshot.appendSections([.main])
+//        snapshot.appendItems(items, toSection: .main)
+//        dataSource?.apply(snapshot, animatingDifferences: false)
+//    }
 
     // MARK: Private
+
+//
+//    private enum SimpleDiffableSection: Int, Hashable {
+//        case main
+//    }
+//
+//    private var dataSource: UITableViewDiffableDataSource<SimpleDiffableSection, Producr>?
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)

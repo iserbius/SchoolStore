@@ -8,6 +8,7 @@ import Foundation
 
 protocol CatalogService: AnyObject {
     func getCatalogItems(with offset: Int, limit: Int, completion: ((Result<[Product], Error>) -> Void)?)
+    func getProduct(with id: String, completion: ((Result<Product, Error>) -> Void)?)
 }
 
 // MARK: - CatalogServiceImpl
@@ -29,6 +30,19 @@ final class CatalogServiceImpl: CatalogService {
             switch result {
             case .success:
                 completion?(result.map(\.data.products))
+            case let .failure(error):
+                completion?(Result.failure(error))
+            }
+        }
+    }
+
+    func getProduct(with id: String, completion: ((Result<Product, Error>) -> Void)?) {
+        networkProvider.mock(
+            CatalogRequest.detailInfo(id)
+        ) { (result: Result<DataResponse<ProductResponse>, Error>) in
+            switch result {
+            case .success:
+                completion?(result.map(\.data.product))
             case let .failure(error):
                 completion?(Result.failure(error))
             }

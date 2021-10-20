@@ -19,23 +19,13 @@ final class NetworkProviderImpl: NetworkProvider {
     init(requestBuilder: RequestBuilder) {
         self.requestBuilder = requestBuilder
         decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
 
     // MARK: Internal
 
     func mock<T: Decodable>(_ request: Request, completion: ((Result<T, Error>) -> Void)?) {
-        guard let data = request.mock else {
-            completion?(.failure(Errors.unknown))
-            return
-        }
-        if let response = try? decoder.decode(T.self, from: data) {
-            completion?(.success(response))
-        }
-        if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {
-            completion?(.failure(Errors.failedResponse(message: errorResponse.message, fields: errorResponse.fields)))
-        } else {
-            completion?(.failure(Errors.unknown))
-        }
+        serializeData(response: request.mock, completion: completion)
     }
 
     func make<T: Decodable>(_ request: Request, completion: ((Result<T, Error>) -> Void)?) {
@@ -47,17 +37,7 @@ final class NetworkProviderImpl: NetworkProvider {
                 completion?(.failure(error))
                 return
             }
-            guard let self = self, let data = data else {
-                completion?(.failure(Errors.unknown))
-                return
-            }
-            if let response = try? self.decoder.decode(T.self, from: data) {
-                completion?(.success(response))
-            } else if let errorResponse = try? self.decoder.decode(ErrorResponse.self, from: data) {
-                completion?(.failure(Errors.failedResponse(message: errorResponse.message, fields: errorResponse.fields)))
-            } else {
-                completion?(.failure(Errors.unknown))
-            }
+            self?.serializeData(response: data, completion: completion)
         }
         task.resume()
     }
@@ -67,4 +47,18 @@ final class NetworkProviderImpl: NetworkProvider {
     private let decoder: JSONDecoder
 
     private let requestBuilder: RequestBuilder
+
+    private func serializeData<T: Decodable>(response data: Data?, completion: ((Result<T, Error>) -> Void)?) {
+        guard let data = data else {
+            completion?(.failure(Errors.unknown))
+            return
+        }
+        if let response = try? decoder.decode(T.self, from: data) {
+            completion?(.success(response))
+        } else if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {
+            completion?(.failure(Errors.failedResponse(message: errorResponse.message, fields: errorResponse.fields)))
+        } else {
+            completion?(.failure(Errors.unknown))
+        }
+    }
 }

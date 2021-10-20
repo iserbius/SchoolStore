@@ -13,7 +13,6 @@ final class CatalogVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         title = L10n.Catalog.title
         view.addSubview(tableView)
         tableView.top().left().right().bottom()

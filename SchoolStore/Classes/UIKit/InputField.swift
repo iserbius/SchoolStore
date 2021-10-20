@@ -79,7 +79,7 @@ final class InputField: UIView, InputFieldProtocol {
 
     // MARK: Private
 
-    private let normalColor: UIColor = Asset.fieldText.color.withAlphaComponent(0.87)
+    private let normalColor: UIColor = Asset.textPrimary.color.withAlphaComponent(0.87)
 
     private let errorColor: UIColor = Asset.fieldError.color
 

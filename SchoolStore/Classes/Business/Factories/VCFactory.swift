@@ -35,7 +35,9 @@ enum VCFactory {
         return tabBarVC
     }
 
-    static func buildProductVC(with _: Product) -> UIViewController {
-        UIViewController()
+    static func buildProductVC(with product: Product) -> UIViewController {
+        let vc = ProductVC()
+        vc.product = product
+        return vc
     }
 }

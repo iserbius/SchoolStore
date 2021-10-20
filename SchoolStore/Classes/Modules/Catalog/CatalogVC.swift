@@ -16,6 +16,7 @@ final class CatalogVC: UIViewController {
         title = L10n.Catalog.title
         view.addSubview(tableView)
         tableView.top().left().right().bottom()
+        configTableView()
         catalogService?.getCatalogItems(with: 0, limit: 20, completion: { [weak self] result in
             guard let self = self else {
                 return
@@ -23,7 +24,6 @@ final class CatalogVC: UIViewController {
             switch result {
             case let .success(products):
                 self.items = products
-                self.tableView.reloadData()
             case .failure:
                 break
             }
@@ -34,71 +34,82 @@ final class CatalogVC: UIViewController {
 
     static let productCellReuseId: String = ProductCell.description()
 
-    var items: [Product] = []
-
     var catalogService: CatalogService?
 
     var snacker: Snacker?
 
-//
-//    func configTableView() {
-//        dataSource = UITableViewDiffableDataSource<SimpleDiffableSection, Producr>(
-//            tableView: tableView,
-//            cellProvider: { tableView, indexPath, _ -> UITableViewCell? in
-//                guard let cell = tableView.dequeueReusableCell(
-//                    withIdentifier: Self.productCellReuseId,
-//                    for: indexPath
-//                ) as? ProductCell else {
-//                    return
-//                }
-//                cell.model = items[indexPath.row]
-//                cell.buyHandler = { product in
-//                    debugPrint("Buy \(product.id)")
-//                }
-//            }
-//        )
-//    }
-//
-//    func snapshot(_ items: [Product]) {
-//        var snapshot = NSDiffableDataSourceSnapshot<SimpleDiffableSection, Product>()
-//        snapshot.appendSections([.main])
-//        snapshot.appendItems(items, toSection: .main)
-//        dataSource?.apply(snapshot, animatingDifferences: false)
-//    }
-//
-//    func loadNextPage() {
-//        isLoadingNextPage = true
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-//            self.isLoadingNextPage = false
-//        }
-//    }
-//
-//    func loadFooterView(load: Bool) {
-//        if load {
-//            let view = UIView()
-//            view.frame.size = .init(width: view.frame.size.width, height: 60)
-//            view.startLoading(with: .smallBlue)
-//            tableView.tableFooterView = view
-//        } else {
-//            tableView.tableFooterView = UIView()
-//        }
-//    }
+    var items: [Product] = [] {
+        didSet {
+            snapshot(Array(Set(items)))
+        }
+    }
+
+    func configTableView() {
+        dataSource = UITableViewDiffableDataSource<SimpleDiffableSection, Product>(
+            tableView: tableView,
+            cellProvider: { tableView, indexPath, model -> UITableViewCell? in
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: Self.productCellReuseId,
+                    for: indexPath
+                ) as? ProductCell else {
+                    return nil
+                }
+                cell.model = model
+                cell.buyHandler = { product in
+                    debugPrint("Buy \(product.id)")
+                }
+                return cell
+            }
+        )
+    }
+
+    func snapshot(_ items: [Product]) {
+        var snapshot = NSDiffableDataSourceSnapshot<SimpleDiffableSection, Product>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(items, toSection: .main)
+        dataSource?.apply(snapshot, animatingDifferences: false)
+    }
+
+    func loadNextPage() {
+        isLoadingNextPage = true
+        catalogService?.getCatalogItems(with: items.count, limit: 12, completion: { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            switch result {
+            case let .success(products):
+                self.items += products
+            case .failure:
+                break
+            }
+            self.isLoadingNextPage = false
+        })
+    }
+
+    func loadFooterView(load: Bool) {
+        if load {
+            let view = UIView()
+            view.frame.size = .init(width: view.frame.size.width, height: 60)
+            view.startLoading(with: .smallBlue)
+            tableView.tableFooterView = view
+        } else {
+            tableView.tableFooterView = UIView()
+        }
+    }
 
     // MARK: Private
 
-//
-//    private enum SimpleDiffableSection: Int, Hashable {
-//        case main
-//    }
-//
-//    private var dataSource: UITableViewDiffableDataSource<SimpleDiffableSection, Producr>?
+    private enum SimpleDiffableSection: Int, Hashable {
+        case main
+    }
+
+    private var dataSource: UITableViewDiffableDataSource<SimpleDiffableSection, Product>?
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.delegate = self
-        tableView.dataSource = self
         tableView.register(
             ProductCell.self,
             forCellReuseIdentifier: Self.productCellReuseId
@@ -106,39 +117,16 @@ final class CatalogVC: UIViewController {
         return tableView
     }()
 
-//
-//    private var isLoadingNextPage: Bool = false {
-//        didSet {
-//            loadFooterView(load: isLoadingNextPage)
-//        }
-//    }
+    private var isLoadingNextPage: Bool = false {
+        didSet {
+            loadFooterView(load: isLoadingNextPage)
+        }
+    }
 }
 
-// MARK: UITableViewDelegate, UITableViewDataSource
+// MARK: UITableViewDelegate
 
-extension CatalogVC: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in _: UITableView) -> Int {
-        1
-    }
-
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        items.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: Self.productCellReuseId,
-            for: indexPath
-        ) as? ProductCell else {
-            return UITableViewCell()
-        }
-        cell.model = items[indexPath.row]
-        cell.buyHandler = { product in
-            debugPrint("Buy \(product.id)")
-        }
-        return cell
-    }
-
+extension CatalogVC: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard items.indices.contains(indexPath.row) else {
             return
@@ -157,17 +145,16 @@ extension CatalogVC: UITableViewDelegate, UITableViewDataSource {
         })
     }
 
-//
-//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate _: Bool) {
-//        guard !isLoadingNextPage else { return }
-//        let offset = scrollView.contentOffset.y
-//        let height = scrollView.frame.size.height
-//        let contentHeight = scrollView.contentSize.height
-//
-//        if scrollView == tableView {
-//            if (offset + height) >= contentHeight {
-//                loadNextPage()
-//            }
-//        }
-//    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate _: Bool) {
+        guard !isLoadingNextPage else { return }
+        let offset = scrollView.contentOffset.y
+        let height = scrollView.frame.size.height
+        let contentHeight = scrollView.contentSize.height
+
+        if scrollView == tableView {
+            if (offset + height) >= contentHeight {
+                loadNextPage()
+            }
+        }
+    }
 }

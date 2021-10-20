@@ -15,7 +15,8 @@ final class ProductVC: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         scrollView.pinToSuperview()
-        contentView.pinToSuperview().width(as: scrollView)
+        contentView.pinToSuperview()
+            .width(as: scrollView)
 
         scrollView
             .heightAnchor

@@ -42,6 +42,41 @@ final class ProductView: UIView {
         } else {
             mainImageView.image = Asset.itemPlaceholder.image
         }
+        product.images.forEach { preview in
+            let buton = UIButton()
+            buton.translatesAutoresizingMaskIntoConstraints = false
+
+            let previewView: UIImageView = {
+                let imageView = UIImageView()
+                imageView.translatesAutoresizingMaskIntoConstraints = false
+                return imageView
+            }()
+            buton.addSubview(previewView)
+            buton.height(32).width(32)
+
+            previewView.pinToSuperview()
+
+            if let previewUrl = URL(string: preview) {
+                let contentImageResource = ImageResource(
+                    downloadURL: previewUrl,
+                    cacheKey: preview
+                )
+                previewView.kf.setImage(
+                    with: contentImageResource,
+                    placeholder: Asset.itemPlaceholder.image,
+                    options: [
+                        .transition(.fade(0.2)),
+                        .forceTransition,
+                        .cacheOriginalImage,
+                        .keepCurrentImageWhileLoading,
+                    ]
+                )
+            } else {
+                previewView.image = Asset.itemPlaceholder.image
+            }
+            buton.addTarget(self, action: #selector(previewDidTap), for: .touchUpInside)
+            previewsStackView.addArrangedSubview(buton)
+        }
     }
 
     // MARK: Private
@@ -55,22 +90,20 @@ final class ProductView: UIView {
         return imageView
     }()
 
-    private lazy var firstMiniImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
     }()
 
-    private lazy var secondMiniImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-
-    private lazy var thirdMiniImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    private lazy var previewsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.spacing = 10
+        stackView.distribution = .fillEqually
+        stackView.alignment = .center
+        return stackView
     }()
 
     private lazy var priceLabel: UILabel = {
@@ -121,11 +154,19 @@ final class ProductView: UIView {
         return label
     }()
 
+    @objc
+    private func previewDidTap(_ sender: UIButton) {
+        guard let imageView = sender.subviews.first(where: { $0 is UIImageView }) as? UIImageView,
+              let image = imageView.image
+        else {
+            return
+        }
+        mainImageView.image = image
+    }
+
     private func setup() {
         addSubview(mainImageView)
-        addSubview(firstMiniImageView)
-        addSubview(secondMiniImageView)
-        addSubview(thirdMiniImageView)
+        addSubview(scrollView)
         addSubview(priceLabel)
         addSubview(badgeLabel)
         addSubview(titleLabel)
@@ -138,26 +179,36 @@ final class ProductView: UIView {
         mainImageView.image = Asset.imagePlaceholder.image
         mainImageView.top().centerX().width(284).height(284)
 
-        secondMiniImageView.image = Asset.imagePlaceholder.image
-        secondMiniImageView.top(to: .bottom(20), of: mainImageView).centerX().width(32).height(32)
+        scrollView.addSubview(previewsStackView)
 
-        firstMiniImageView.image = Asset.imagePlaceholder.image
-        firstMiniImageView.top(to: .top, of: secondMiniImageView)
-            .right(to: .left(10), of: secondMiniImageView).width(32).height(32)
+        scrollView
+            .top(to: .bottom(20), of: mainImageView)
+            .height(32)
 
-        thirdMiniImageView.image = Asset.imagePlaceholder.image
-        thirdMiniImageView.top(to: .top, of: secondMiniImageView)
-            .left(to: .right(10), of: secondMiniImageView).width(32).height(32)
+        scrollView.widthAnchor
+            .constraint(lessThanOrEqualTo: previewsStackView.widthAnchor)
+            .priority(999)
+            .activate()
+
+        scrollView.leadingAnchor
+            .constraint(equalTo: leadingAnchor, constant: 16)
+            .activate()
+
+        scrollView.trailingAnchor
+            .constraint(equalTo: trailingAnchor, constant: -16)
+            .activate()
+
+        previewsStackView.top().bottom().centerX().height(as: scrollView)
 
         priceLabel.text = "9 000 ₽"
         priceLabel.textColor = textPrimaryColor
         priceLabel.font = UIFont(name: "Roboto-Medium", size: 24)
-        priceLabel.top(to: .bottom(20), of: secondMiniImageView).left(16)
+        priceLabel.top(to: .bottom(20), of: scrollView).left(16)
 
         badgeLabel.text = "Хит сезона"
         badgeLabel.backgroundColor = .red
         badgeLabel.layer.masksToBounds = true
-        badgeLabel.layer.cornerRadius = 16
+        badgeLabel.layer.cornerRadius = 8
         badgeLabel.right(16).centerY(0, to: priceLabel)
 
         titleLabel.text = "Men's Nike Tom Brady Red Tampa Bay Buccaneers Super Bowl LV Bound Game Jersey"

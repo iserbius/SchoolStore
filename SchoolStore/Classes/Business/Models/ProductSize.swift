@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct ProductSize: Decodable {
+struct ProductSize: Decodable, Hashable, Equatable {
     let value: String
     let isAvailable: String
 }

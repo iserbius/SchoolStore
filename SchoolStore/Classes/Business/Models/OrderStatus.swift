@@ -4,7 +4,6 @@
 
 import Foundation
 
-struct FieldError: Decodable {
-    let field: String
-    let message: String
+enum OrderStatus: String, Decodable {
+    case inWork = "in_work", done, cancelled
 }

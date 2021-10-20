@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct FieldError: Decodable {
-    let field: String
-    let message: String
+struct ProductSize: Decodable {
+    let value: String
+    let isAvailable: String
 }

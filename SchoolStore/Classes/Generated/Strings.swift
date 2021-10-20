@@ -24,6 +24,11 @@ internal enum L10n {
     internal static let password = L10n.tr("Localizable", "auth.password")
   }
 
+  internal enum Catalog {
+    /// Купить
+    internal static let buy = L10n.tr("Localizable", "catalog.buy")
+  }
+
   internal enum Common {
     /// Поле пустое
     internal static let emptyField = L10n.tr("Localizable", "common.emptyField")

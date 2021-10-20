@@ -5,3 +5,5 @@
 
 "common.error" = "Что-то пошло не так";
 "common.emptyField" = "Поле пустое";
+
+"catalog.buy" = "Купить";

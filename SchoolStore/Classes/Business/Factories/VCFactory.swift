@@ -19,6 +19,7 @@ enum VCFactory {
             guard let nvc = vc as? UINavigationController, let rootVC = nvc.viewControllers.first else {
                 return
             }
+            nvc.navigationBar.prefersLargeTitles = true
             switch rootVC {
             case let vc as ProfileVC:
                 vc.dataService = CoreFactory.dataService
@@ -26,10 +27,15 @@ enum VCFactory {
                 break
             case let vc as CatalogVC:
                 vc.catalogService = CoreFactory.buildCatalogService()
+                vc.snacker = CoreFactory.snacker
             default:
                 break
             }
         }
         return tabBarVC
+    }
+
+    static func buildProductVC(with _: Product) -> UIViewController {
+        UIViewController()
     }
 }

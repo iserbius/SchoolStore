@@ -8,5 +8,5 @@ struct Profile: Decodable {
     let name: String
     let surname: String
     let occupation: String
-    let avatarUrl: String
+    let avatarUrl: String?
 }

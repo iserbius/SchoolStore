@@ -27,6 +27,8 @@ internal enum L10n {
   internal enum Catalog {
     /// Купить
     internal static let buy = L10n.tr("Localizable", "catalog.buy")
+    /// Каталог
+    internal static let title = L10n.tr("Localizable", "catalog.title")
   }
 
   internal enum Common {

@@ -72,6 +72,8 @@
 		C2CD31A02720297C001A32C3 /* ProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD319F2720297C001A32C3 /* ProductResponse.swift */; };
 		C2CD31A327202AC3001A32C3 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C2CD31A227202AC3001A32C3 /* Kingfisher */; };
 		C2CD31A527202CBA001A32C3 /* NumberFormatter+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD31A427202CBA001A32C3 /* NumberFormatter+Default.swift */; };
+		C2CD31A727202FE6001A32C3 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = C2CD31A627202FE6001A32C3 /* en.lproj */; };
+		C2CD31A92720389A001A32C3 /* AppDelegate+NavAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD31A82720389A001A32C3 /* AppDelegate+NavAppearance.swift */; };
 		C2D7209D270484E700C40EA5 /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D7209C270484E700C40EA5 /* RequestMethod.swift */; };
 		C2D7209F2704855100C40EA5 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D7209E2704855100C40EA5 /* RequestBuilder.swift */; };
 		C2D720A22704869900C40EA5 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D720A12704869900C40EA5 /* UserRequest.swift */; };
@@ -145,6 +147,8 @@
 		C2CD319D272028B5001A32C3 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		C2CD319F2720297C001A32C3 /* ProductResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResponse.swift; sourceTree = "<group>"; };
 		C2CD31A427202CBA001A32C3 /* NumberFormatter+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Default.swift"; sourceTree = "<group>"; };
+		C2CD31A627202FE6001A32C3 /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
+		C2CD31A82720389A001A32C3 /* AppDelegate+NavAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+NavAppearance.swift"; sourceTree = "<group>"; };
 		C2D7209C270484E700C40EA5 /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
 		C2D7209E2704855100C40EA5 /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
 		C2D720A12704869900C40EA5 /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
@@ -248,6 +252,7 @@
 				C21E131F2704510C00867E2E /* AppDelegate.swift */,
 				C21E133427045A3F00867E2E /* Modules */,
 				C21E133327045A3100867E2E /* Business */,
+				C2CD31A82720389A001A32C3 /* AppDelegate+NavAppearance.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 		C21E133A27045AE600867E2E /* Localizable */ = {
 			isa = PBXGroup;
 			children = (
+				C2CD31A627202FE6001A32C3 /* en.lproj */,
 				C21E133B27045AF000867E2E /* ru.lproj */,
 			);
 			path = Localizable;
@@ -521,6 +527,7 @@
 				C2B96D5A270DE9D90012D0E8 /* changeProfile.json in Resources */,
 				C2F28B3B27048E92000A2703 /* auth.json in Resources */,
 				C21E133927045ADA00867E2E /* Localizable.strings in Resources */,
+				C2CD31A727202FE6001A32C3 /* en.lproj in Resources */,
 				C21E13292704510E00867E2E /* Assets.xcassets in Resources */,
 				C21E13652704671A00867E2E /* Catalog.storyboard in Resources */,
 				C21E133E27045B1900867E2E /* InfoPlist.strings in Resources */,
@@ -617,6 +624,7 @@
 				C2D7209F2704855100C40EA5 /* RequestBuilder.swift in Sources */,
 				C2D7209D270484E700C40EA5 /* RequestMethod.swift in Sources */,
 				C2CD31A527202CBA001A32C3 /* NumberFormatter+Default.swift in Sources */,
+				C2CD31A92720389A001A32C3 /* AppDelegate+NavAppearance.swift in Sources */,
 				C2141660270DBD1000C40071 /* HistoryVC.swift in Sources */,
 				C2151F542718862B009036CB /* Product.swift in Sources */,
 				C27E0F20270473A20015530B /* StoryboardScenes.swift in Sources */,

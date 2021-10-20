@@ -22,14 +22,19 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
   internal static let accentColor = ColorAsset(name: "AccentColor")
+  internal static let buyTint = ColorAsset(name: "buy.tint")
   internal static let fieldBacground = ColorAsset(name: "field.bacground")
   internal static let fieldError = ColorAsset(name: "field.error")
   internal static let fieldText = ColorAsset(name: "field.text")
+  internal static let navBlue = ColorAsset(name: "nav.blue")
+  internal static let textSecondary = ColorAsset(name: "text.secondary")
+  internal static let white = ColorAsset(name: "white")
   internal static let fieldEye = ImageAsset(name: "field.eye")
   internal static let itemAddToCart1 = ImageAsset(name: "item.addToCart-1")
   internal static let itemAddToCart2 = ImageAsset(name: "item.addToCart-2")
   internal static let itemAddToCart = ImageAsset(name: "item.addToCart")
   internal static let itemPlaceholder = ImageAsset(name: "item.placeholder")
+  internal static let navBack = ImageAsset(name: "nav.back")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

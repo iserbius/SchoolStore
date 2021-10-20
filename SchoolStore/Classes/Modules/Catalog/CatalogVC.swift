@@ -13,6 +13,8 @@ final class CatalogVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        title = L10n.Catalog.title
         view.addSubview(tableView)
         tableView.top().left().right().bottom()
         catalogService?.getCatalogItems(with: 0, limit: 20, completion: { [weak self] result in
@@ -36,6 +38,8 @@ final class CatalogVC: UIViewController {
     var items: [Product] = []
 
     var catalogService: CatalogService?
+
+    var snacker: Snacker?
 
     // MARK: Private
 
@@ -72,6 +76,27 @@ extension CatalogVC: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         cell.model = items[indexPath.row]
+        cell.buyHandler = { product in
+            debugPrint("Buy \(product.id)")
+        }
         return cell
+    }
+
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard items.indices.contains(indexPath.row) else {
+            return
+        }
+        catalogService?.getProduct(with: items[indexPath.row].id, completion: { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            switch result {
+            case let .success(model):
+                debugPrint("Transition to \(model.id)")
+                self.navigationController?.pushViewController(VCFactory.buildProductVC(with: model), animated: true)
+            case let .failure(error):
+                self.snacker?.show(snack: error.localizedDescription, with: .error)
+            }
+        })
     }
 }

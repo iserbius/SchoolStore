@@ -4,6 +4,7 @@
 
 import AutoLayoutSugar
 import Foundation
+import Kingfisher
 import UIKit
 
 final class ProductCell: UITableViewCell {
@@ -21,9 +22,30 @@ final class ProductCell: UITableViewCell {
 
     // MARK: Internal
 
+    var buyHandler: ((Product) -> Void)?
+
     var model: Product? {
         didSet {
-            titleLabel.text = model?.id
+            titleLabel.text = model?.title
+            descriptionLabel.text = model?.department
+
+            if let preview = model?.preview, let previewUrl = URL(string: preview) {
+                let contentImageResource = ImageResource(downloadURL: previewUrl, cacheKey: preview)
+                contentImageView.kf.setImage(
+                    with: contentImageResource,
+                    placeholder: Asset.itemPlaceholder.image,
+                    options: [
+                        .transition(.fade(0.2)),
+                        .forceTransition,
+                        .cacheOriginalImage,
+                        .keepCurrentImageWhileLoading,
+                    ]
+                )
+            } else {
+                contentImageView.image = Asset.itemPlaceholder.image
+            }
+
+            priceLabel.text = NumberFormatter.rubString(from: model?.price ?? 0)
         }
     }
 
@@ -32,30 +54,44 @@ final class ProductCell: UITableViewCell {
     private lazy var contentImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = Asset.itemPlaceholder.image
         return imageView
     }()
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
+        label.font = .systemFont(ofSize: 14, weight: .medium)
         return label
     }()
 
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.textColor = Asset.textSecondary.color
         return label
     }()
 
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 14, weight: .medium)
         return label
     }()
 
     private lazy var addToCartButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(Asset.itemAddToCart.image, for: .normal)
+        button.setTitle(L10n.Catalog.buy.uppercased(), for: .normal)
+        button.addTarget(self, action: #selector(buyPressed), for: .touchUpInside)
+        button.titleLabel?.font = .systemFont(ofSize: 12)
+        button.setTitleColor(Asset.buyTint.color, for: .normal)
+        button.tintColor = Asset.buyTint.color
+        button.imageEdgeInsets.left = -5
+        button.imageEdgeInsets.right = 5
         return button
     }()
 
@@ -64,6 +100,14 @@ final class ProductCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
+    @objc
+    private func buyPressed() {
+        guard let product = model else {
+            return
+        }
+        buyHandler?(product)
+    }
 
     private func setup() {
         selectionStyle = .none
@@ -80,21 +124,21 @@ final class ProductCell: UITableViewCell {
         titleLabel
             .top(16).left(to: .right(16), of: contentImageView)
             .right(16)
-        descriptionLabel.text = "12"
 
         descriptionLabel
             .top(to: .bottom, of: titleLabel)
             .left(to: .right(16), of: contentImageView).right(16)
 
-        priceLabel.text = "12"
-
         priceLabel
-            .bottom(31)
             .left(to: .right(16), of: contentImageView)
+            .bottom(31)
+
+        priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: addToCartButton.leadingAnchor).priority(999).activate()
         addToCartButton
+            .width(90).height(28)
             .top(to: .top, of: priceLabel)
             .bottom(31)
-            .left(to: .right(16), of: priceLabel).right(16)
+            .right(16)
 
         separatorView.backgroundColor = Asset.fieldBacground.color
         separatorView.bottom().left(16).right(16).height(1)

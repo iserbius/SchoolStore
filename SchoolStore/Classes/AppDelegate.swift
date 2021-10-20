@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window?.rootViewController = initialVC
         window?.makeKeyAndVisible()
-
+        configureNavigationBar()
         return true
     }
 

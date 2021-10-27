@@ -13,6 +13,19 @@ class ProfileVC: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    // MARK: Internal
+
+    var dataService: DataService?
+
+    @IBAction func editProfilePressed(_: Any) {}
+
+    @IBAction func logoutPressed(_: Any) {
+        dataService?.appState.accessToken = nil
+        UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildAuthVC()
+    }
+
+    // MARK: Private
+
     /*
      // MARK: - Navigation
 
@@ -22,13 +35,4 @@ class ProfileVC: UIViewController {
          // Pass the selected object to the new view controller.
      }
      */
-
-    // MARK: Internal
-
-    var dataService: DataService?
-
-    @IBAction func logoutPressed(_: Any) {
-        dataService?.appState.accessToken = nil
-        UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildAuthVC()
-    }
 }

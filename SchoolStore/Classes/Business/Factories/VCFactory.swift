@@ -40,4 +40,11 @@ enum VCFactory {
         vc.product = product
         return vc
     }
+
+    static func buildBottomSheetController(with contentView: UIView, onEveryTapOut: (() -> Void)?) -> UIViewController {
+        let parameters = BottomSheetParameters(contentView: contentView, onEveryTapOut: onEveryTapOut)
+        let vc = BottomSheetController(arguments: parameters)
+        vc.transitioningDelegate = vc
+        return vc
+    }
 }

@@ -30,11 +30,29 @@
                                     <action selector="logoutPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Isl-Rm-IIf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdg-t3-dxK">
+                                <rect key="frame" x="140.5" y="497.5" width="133" height="74"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="MaJ-C6-W3U"/>
+                                    <constraint firstAttribute="width" constant="133" id="aIT-12-HxF"/>
+                                </constraints>
+                                <state key="normal" title="edit profile">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="editProfilePressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="m1a-zb-mcR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="xdg-t3-dxK" firstAttribute="height" secondItem="e23-sF-PGD" secondAttribute="height" id="3fY-rX-XbS"/>
+                            <constraint firstItem="xdg-t3-dxK" firstAttribute="top" secondItem="e23-sF-PGD" secondAttribute="bottom" constant="10" id="JbY-yh-iLN"/>
+                            <constraint firstItem="xdg-t3-dxK" firstAttribute="width" secondItem="e23-sF-PGD" secondAttribute="width" id="cES-cv-qoR"/>
                             <constraint firstItem="e23-sF-PGD" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="foJ-Wv-2Zo"/>
+                            <constraint firstItem="xdg-t3-dxK" firstAttribute="centerX" secondItem="e23-sF-PGD" secondAttribute="centerX" id="jFI-ai-aQd"/>
                             <constraint firstItem="e23-sF-PGD" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="w97-hQ-NXU"/>
                         </constraints>
                     </view>

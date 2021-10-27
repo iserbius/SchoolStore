@@ -41,6 +41,15 @@
 		C239CB6A27205AA6003ABBB0 /* LoaderParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C239CB6527205AA6003ABBB0 /* LoaderParameters.swift */; };
 		C239CB6B27205AA6003ABBB0 /* UILoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C239CB6627205AA6003ABBB0 /* UILoadable.swift */; };
 		C239CB6E27205ABE003ABBB0 /* LoaderParameters+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = C239CB6D27205ABE003ABBB0 /* LoaderParameters+Default.swift */; };
+		C23E86BF2729754C00E347E0 /* ScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23E86B02729754B00E347E0 /* ScrollableView.swift */; };
+		C23E86C02729754C00E347E0 /* DefaultBottomSheetStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23E86B22729754B00E347E0 /* DefaultBottomSheetStyle.swift */; };
+		C23E86C72729754C00E347E0 /* BottomSheetParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23E86BA2729754B00E347E0 /* BottomSheetParameters.swift */; };
+		C23E86C82729754C00E347E0 /* UIPanGestureRecognizer+Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23E86BB2729754B00E347E0 /* UIPanGestureRecognizer+Direction.swift */; };
+		C23E86C92729754C00E347E0 /* BottomSheetStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23E86BC2729754B00E347E0 /* BottomSheetStyle.swift */; };
+		C23E86CA2729754C00E347E0 /* BottomSheetParametersProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23E86BD2729754C00E347E0 /* BottomSheetParametersProtocol.swift */; };
+		C23E86CB2729754C00E347E0 /* BottomSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23E86BE2729754C00E347E0 /* BottomSheetController.swift */; };
+		C23E86CD2729766500E347E0 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23E86CC2729766500E347E0 /* PresentationController.swift */; };
+		C23E86D0272976DD00E347E0 /* KeyboardManager in Frameworks */ = {isa = PBXBuildFile; productRef = C23E86CF272976DD00E347E0 /* KeyboardManager */; };
 		C275FEEE270DFCBF00431B51 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275FEED270DFCBF00431B51 /* ProductCell.swift */; };
 		C27E0F1D270473A20015530B /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E0F18270473A20015530B /* Plist.swift */; };
 		C27E0F1E270473A20015530B /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E0F19270473A20015530B /* Assets.swift */; };
@@ -126,6 +135,14 @@
 		C239CB6527205AA6003ABBB0 /* LoaderParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderParameters.swift; sourceTree = "<group>"; };
 		C239CB6627205AA6003ABBB0 /* UILoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILoadable.swift; sourceTree = "<group>"; };
 		C239CB6D27205ABE003ABBB0 /* LoaderParameters+Default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoaderParameters+Default.swift"; sourceTree = "<group>"; };
+		C23E86B02729754B00E347E0 /* ScrollableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableView.swift; sourceTree = "<group>"; };
+		C23E86B22729754B00E347E0 /* DefaultBottomSheetStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBottomSheetStyle.swift; sourceTree = "<group>"; };
+		C23E86BA2729754B00E347E0 /* BottomSheetParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetParameters.swift; sourceTree = "<group>"; };
+		C23E86BB2729754B00E347E0 /* UIPanGestureRecognizer+Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPanGestureRecognizer+Direction.swift"; sourceTree = "<group>"; };
+		C23E86BC2729754B00E347E0 /* BottomSheetStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetStyle.swift; sourceTree = "<group>"; };
+		C23E86BD2729754C00E347E0 /* BottomSheetParametersProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetParametersProtocol.swift; sourceTree = "<group>"; };
+		C23E86BE2729754C00E347E0 /* BottomSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetController.swift; sourceTree = "<group>"; };
+		C23E86CC2729766500E347E0 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		C275FEED270DFCBF00431B51 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		C27E0F18270473A20015530B /* Plist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plist.swift; sourceTree = "<group>"; };
 		C27E0F19270473A20015530B /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
@@ -184,6 +201,7 @@
 				C2CD31A327202AC3001A32C3 /* Kingfisher in Frameworks */,
 				C2B96D3E270DD48C0012D0E8 /* TTGSnackbar in Frameworks */,
 				C214165E270DB9E400C40071 /* KeychainAccess in Frameworks */,
+				C23E86D0272976DD00E347E0 /* KeyboardManager in Frameworks */,
 				C214165B270DA80B00C40071 /* AutoLayoutSugar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +212,7 @@
 		C213C1C42704C52700E84711 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				C23E86AF2729754B00E347E0 /* BottomSheet */,
 				C239CB6227205A81003ABBB0 /* Loadable */,
 				5E74DFAD2DCF610F9DC7903D /* InputField.swift */,
 			);
@@ -409,6 +428,29 @@
 			path = Loadable;
 			sourceTree = "<group>";
 		};
+		C23E86AF2729754B00E347E0 /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				C23E86B02729754B00E347E0 /* ScrollableView.swift */,
+				C23E86B12729754B00E347E0 /* Configurable */,
+				C23E86BA2729754B00E347E0 /* BottomSheetParameters.swift */,
+				C23E86BB2729754B00E347E0 /* UIPanGestureRecognizer+Direction.swift */,
+				C23E86BC2729754B00E347E0 /* BottomSheetStyle.swift */,
+				C23E86BD2729754C00E347E0 /* BottomSheetParametersProtocol.swift */,
+				C23E86BE2729754C00E347E0 /* BottomSheetController.swift */,
+				C23E86CC2729766500E347E0 /* PresentationController.swift */,
+			);
+			path = BottomSheet;
+			sourceTree = "<group>";
+		};
+		C23E86B12729754B00E347E0 /* Configurable */ = {
+			isa = PBXGroup;
+			children = (
+				C23E86B22729754B00E347E0 /* DefaultBottomSheetStyle.swift */,
+			);
+			path = Configurable;
+			sourceTree = "<group>";
+		};
 		C27E0F172704730D0015530B /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -509,6 +551,7 @@
 				C214165D270DB9E400C40071 /* KeychainAccess */,
 				C2B96D3D270DD48C0012D0E8 /* TTGSnackbar */,
 				C2CD31A227202AC3001A32C3 /* Kingfisher */,
+				C23E86CF272976DD00E347E0 /* KeyboardManager */,
 			);
 			productName = SchoolStore;
 			productReference = C21E131C2704510C00867E2E /* SchoolStore.app */;
@@ -543,6 +586,7 @@
 				C214165C270DB9E400C40071 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				C2B96D3C270DD48C0012D0E8 /* XCRemoteSwiftPackageReference "TTGSnackbar" */,
 				C2CD31A127202AC3001A32C3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				C23E86CE272976DD00E347E0 /* XCRemoteSwiftPackageReference "KeyboardManager" */,
 			);
 			productRefGroup = C21E131D2704510C00867E2E /* Products */;
 			projectDirPath = "";
@@ -636,12 +680,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				C27E0F1F270473A20015530B /* StoryboardSegues.swift in Sources */,
+				C23E86BF2729754C00E347E0 /* ScrollableView.swift in Sources */,
 				C21E134B27045C6C00867E2E /* AuthVC.swift in Sources */,
 				C239CB6A27205AA6003ABBB0 /* LoaderParameters.swift in Sources */,
 				C2CD319C2720284E001A32C3 /* Order.swift in Sources */,
 				C27E0F21270473A20015530B /* Strings.swift in Sources */,
+				C23E86CA2729754C00E347E0 /* BottomSheetParametersProtocol.swift in Sources */,
+				C23E86C92729754C00E347E0 /* BottomSheetStyle.swift in Sources */,
+				C23E86CB2729754C00E347E0 /* BottomSheetController.swift in Sources */,
+				C23E86CD2729766500E347E0 /* PresentationController.swift in Sources */,
 				C2B96D6A270DEAB20012D0E8 /* OrdersRequests.swift in Sources */,
 				C2D720A927048B1A00C40EA5 /* Profile.swift in Sources */,
+				C23E86C02729754C00E347E0 /* DefaultBottomSheetStyle.swift in Sources */,
 				C2CD31A02720297C001A32C3 /* ProductResponse.swift in Sources */,
 				C2141662270DBD2900C40071 /* CatalogVC.swift in Sources */,
 				C21E134F27045CA900867E2E /* TabBarVC.swift in Sources */,
@@ -665,6 +715,7 @@
 				C2151F52271885F3009036CB /* CatalogService.swift in Sources */,
 				C21E135D270464FF00867E2E /* Request.swift in Sources */,
 				C27E0F242704759D0015530B /* ProfileVC.swift in Sources */,
+				C23E86C72729754C00E347E0 /* BottomSheetParameters.swift in Sources */,
 				C2B96D68270DEAA60012D0E8 /* CatallogRequests.swift in Sources */,
 				C2B96D45270DDA820012D0E8 /* Snacker.swift in Sources */,
 				C239CB6927205AA6003ABBB0 /* LoaderView.swift in Sources */,
@@ -683,6 +734,7 @@
 				C2CD319E272028B5001A32C3 /* OrderStatus.swift in Sources */,
 				C275FEEE270DFCBF00431B51 /* ProductCell.swift in Sources */,
 				C2D720A22704869900C40EA5 /* UserRequest.swift in Sources */,
+				C23E86C82729754C00E347E0 /* UIPanGestureRecognizer+Direction.swift in Sources */,
 				C2B96D43270DD9A50012D0E8 /* SnackCustomView.swift in Sources */,
 				5E74DC9F682F7103E6003DD3 /* InputField.swift in Sources */,
 				C2B96D4B270DE0A00012D0E8 /* FieldError.swift in Sources */,
@@ -915,6 +967,14 @@
 				minimumVersion = 4.2.2;
 			};
 		};
+		C23E86CE272976DD00E347E0 /* XCRemoteSwiftPackageReference "KeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alphatroya/KeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.1;
+			};
+		};
 		C2B96D3C270DD48C0012D0E8 /* XCRemoteSwiftPackageReference "TTGSnackbar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/zekunyan/TTGSnackbar";
@@ -943,6 +1003,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C214165C270DB9E400C40071 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		C23E86CF272976DD00E347E0 /* KeyboardManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C23E86CE272976DD00E347E0 /* XCRemoteSwiftPackageReference "KeyboardManager" */;
+			productName = KeyboardManager;
 		};
 		C2B96D3D270DD48C0012D0E8 /* TTGSnackbar */ = {
 			isa = XCSwiftPackageProductDependency;

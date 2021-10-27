@@ -17,7 +17,37 @@ class ProfileVC: UIViewController {
 
     var dataService: DataService?
 
-    @IBAction func editProfilePressed(_: Any) {}
+    @objc
+    func specializationDidTap(_ sender: UIButton) {
+        print(sender.titleLabel?.text)
+    }
+
+    @IBAction func editProfilePressed(_: Any) {
+        let array = [
+            "Разработчик",
+            "Тестировщик",
+            "Строитель",
+            "Продавец",
+        ]
+        let view = UIStackView()
+        view.axis = .vertical
+        view.alignment = .leading
+        view.translatesAutoresizingMaskIntoConstraints = false
+        array.forEach { specialization in
+            let button = UIButton()
+            button.height(44)
+            button.setTitleColor(.blue, for: .normal)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.setTitle(specialization, for: .normal)
+            button.addTarget(self, action: #selector(specializationDidTap), for: .touchUpInside)
+            view.addArrangedSubview(button)
+        }
+        let vc = VCFactory.buildBottomSheetController(
+            with: view,
+            onEveryTapOut: nil
+        )
+        present(vc, animated: true, completion: nil)
+    }
 
     @IBAction func logoutPressed(_: Any) {
         dataService?.appState.accessToken = nil

@@ -18,6 +18,12 @@ final class ProductVC: UIViewController {
         contentView.pinToSuperview()
             .width(as: scrollView)
 
+        let button = UIButton()
+        view.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(action), for: .touchUpInside)
+        button.center().width(100).height(50)
+        button.backgroundColor = .red
         scrollView
             .heightAnchor
             .constraint(lessThanOrEqualTo: contentView.heightAnchor)
@@ -56,4 +62,14 @@ final class ProductVC: UIViewController {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
     }()
+
+    @objc
+    private func action() {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.height(100)
+        view.backgroundColor = .red
+        let vc = VCFactory.buildBottomSheetController(with: view, onEveryTapOut: nil)
+        present(vc, animated: true, completion: nil)
+    }
 }

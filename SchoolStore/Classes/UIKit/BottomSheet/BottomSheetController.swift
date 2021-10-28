@@ -217,7 +217,7 @@ public final class BottomSheetController: UIViewController, UIGestureRecognizerD
             lessThanOrEqualToConstant: maximumBottomSheetHeight
         ).priority(.required).activate()
 
-        if let contentViewAsScroll = contentView.scrollView, contentViewAsScroll.isScrollEnabled {
+        if let contentViewAsScroll = contentView.innerScrollView, contentViewAsScroll.isScrollEnabled {
             contentViewAsScroll.delegate = self
         }
 

@@ -8,7 +8,7 @@ import UIKit
 // MARK: - ScrollableView
 
 public protocol ScrollableView: UIView {
-    var scrollView: UIScrollView? { get }
+    var innerScrollView: UIScrollView? { get }
 }
 
 // MARK: - UIView + ScrollableView
@@ -16,5 +16,5 @@ public protocol ScrollableView: UIView {
 extension UIView: ScrollableView {}
 
 public extension ScrollableView where Self: UIView {
-    var scrollView: UIScrollView? { subviews.first as? UIScrollView }
+    var innerScrollView: UIScrollView? { subviews.first as? UIScrollView }
 }
